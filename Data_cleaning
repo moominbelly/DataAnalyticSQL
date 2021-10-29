@@ -1,0 +1,11 @@
+ Clean Daily active data 
+**  Cleaned if sedentaryminutes >1400
+** Cleaned if totalstep < 200 
+** Cleaned if Totaldistance < 1.0 
+
+SQL Query
+delete 
+ FROM `case-study-bellabeat-324615.daily_active_data.daily_active_unclean`
+ where SedentaryMinutes >1400
+ or TotalSteps <100
+ or TotalDistance <1.0
