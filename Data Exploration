@@ -1,4 +1,36 @@
 ## Data Exploration
 
-## Average sleephours and Average daily data (Total distance, total step) by users
+## How many users are in Daily_Active data --
+SELECT Id
+ FROM `case-study-bellabeat-324615.daily_active_data.daily_active`
+ GROUP BY Id
+
+## How many users are in Sleep_ Data data --
+ SELECT ID
+ 
+ FROM `case-study-bellabeat-324615.daily_active_data.sleep_data`
+
+ group by Id
+ 
+## Min Sleep hour / Max Sleep hour / Avgerage Sleep hour
+ SELECT MIN (TotalSleepHour)AS Min_SleepHour, MAX(TotalSleepHour) AS Max_Sleephour ,
+ Round (AVG(TotalSleepHour),1 )As Avg_totalSleephour
+ 
+ FROM `case-study-bellabeat-324615.daily_active_data.sleep_data`
+
+## 
+
+
+
+
+
+## Combine two data set and find Average sleephours and Average daily data (Total distance, total step) by users--
+
+SELECT  Sleepdata.Id, Round(avg(Sleepdata.TotalSleepHour),1) as AvgSleepHour,
+ Round(avg(Dailydata.TotalDistance),1) as AvgDistance, Round(AVG(Dailydata.TotalSteps)) as AvgTotalStep
+
+ FROM `case-study-bellabeat-324615.daily_active_data.sleep_data`  as Sleepdata
+ LEFT JOIN `case-study-bellabeat-324615.daily_active_data.daily_active` As Dailydata
+ ON Sleepdata.Id =Dailydata.Id AND  Sleepdata.SleepDay =Dailydata.ActivityDate
+ GROUP BY Id
 
