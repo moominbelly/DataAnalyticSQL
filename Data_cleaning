@@ -3,9 +3,18 @@
 ** Cleaned if totalstep < 200 
 ** Cleaned if Totaldistance < 1.0 
 
-## SQL Query
+## Cleang daily active data 
 DELETE 
  FROM `case-study-bellabeat-324615.daily_active_data.daily_active_unclean`
  WHERE SedentaryMinutes >1400
  or TotalSteps <100
  or TotalDistance <1.0
+
+
+## Join Sleep data and daily active data
+SELECT  Sleepdata.Id, Dailydata.ActivityDate ,Sleepdata.TotalSleepHour,
+ Dailydata.TotalDistance,
+
+ FROM `case-study-bellabeat-324615.daily_active_data.sleep_data`  as Sleepdata
+ LEFT JOIN `case-study-bellabeat-324615.daily_active_data.daily_active` As Dailydata
+ on Sleepdata.Id =Dailydata.Id AND  Sleepdata.SleepDay =Dailydata.ActivityDate
